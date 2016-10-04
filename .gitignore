@@ -1,0 +1,3 @@
+TrafficSignVideoTest/ClassifierTrainingSamples/
+TrafficSignVideoTest/detectorTrainingFiles/
+signsHOGFeatures.mat
