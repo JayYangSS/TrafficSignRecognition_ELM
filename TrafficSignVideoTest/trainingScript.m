@@ -8,7 +8,7 @@ imgWidth=1280;
 imgHeight=1024;
 trafficSign_data_info=conanecateStruct(startIndex,endIndex,imgWidth,imgHeight);%load the struct of positive samples info for traffic sign detector
 negativeFolder='detectorTrainingFiles\ChanshuNegativeSamples';  %path of negative samples for traffic sign detector
-trafficSignDetectorName='trainedDetector6.xml';
+trafficSignDetectorName='trainedDetetorXML\trainedDetector6.xml';
 
 %train the traffic sign detector and save the training result into xml files specified by 'trafficSignDetectorName'.
 trainCascadeObjectDetector(trafficSignDetectorName,trafficSign_data_info,negativeFolder,'FalseAlarmRate',0.2,'NumCascadeStages',15);
