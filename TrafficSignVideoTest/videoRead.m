@@ -2,7 +2,7 @@ clear all;
 %filename='E:\BaiduYunDownload\模糊图像处理竞赛\训练数据集\交通标志图像识别挑战赛\交通标识识别视频训练集partA\082\082.avi';
 %filename='E:\BaiduYunDownload\模糊图像处理竞赛\初赛数据集及相关文档\交通标识图像识别挑战赛\发布1010\072\072.avi';
 %filename=='D:\JY\JY_TrainingSamples\BroadView\tmp';
-detector = vision.CascadeObjectDetector('trainedDetetorXML\trainedDetectorHaar.xml');
+detector = vision.CascadeObjectDetector('trainedDetetorXML\trainedDetector7.xml');
 
 %imDir = fullfile(matlabroot,'toolbox','vision','visiondata','stopSignImages');
 %addpath(imDir);
@@ -56,4 +56,4 @@ whos video
 end
 
 
-rmpath(imDir);
+%rmpath(imDir);

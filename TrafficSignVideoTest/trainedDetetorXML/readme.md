@@ -12,3 +12,12 @@
 
 ## trainedDetectorHaar.xml
 使用Haar特征进行训练，训练时间较长（其他的文件都是使用HOG特征训练的），误检测较多，漏检较少。
+
+## trainedDetector7.xml:
+训练参数如下：
+
+```matlab
+trainCascadeObjectDetector(trafficSignDetectorName,trafficSign_data_info,negativeFolder,'FalseAlarmRate',0.2,'NumCascadeStages',15);
+```
+本文件是增加了Tsinghua-Tencent数据集中6000多张other样本后训练的detector文件，负样本总数量达到12525个，为了解决训练过程中的负样本数量不足的问题。15个stage训练完毕，使用的特征为HOG。
+使用该文件的误检少很多，但是漏检也比较多。但是就检测结果而言，效果比之前的结果好了很多。
