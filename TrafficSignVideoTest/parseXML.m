@@ -5,6 +5,7 @@ function data = parseXML(index,imgWidth,imgHeight)
     xmlPath=['detectorTrainingFiles\常熟比赛数据集\训练数据集-2016.07.27.release\TSD-Signal-GT\TSD-Signal-',num2str(index,'%05d'),'-GT.xml'];
     xDoc=xmlread(xmlPath);
     globalIndex=0;
+    label_globalIndex=0;
     imgeFilename={};
     objectBoundingBoxes={};
     %get the type label
@@ -25,7 +26,7 @@ function data = parseXML(index,imgWidth,imgHeight)
         for targetIndex=0:currentFrameTargetNum-1
               position=positionContenList.item(globalIndex).getFirstChild.getData;
               type=typeContenList.item(globalIndex).getFirstChild.getData;
-              %globalIndex=globalIndex+1;
+              globalIndex=globalIndex+1;
               imgPath=['E:\BaiduYunDownload\常熟比赛数据集\训练数据集-2016.07.25.release\TSD-Signal_part03\TSD-Signal\TSD-Signal-',num2str(index,'%05d'),'\TSD-Signal-',num2str(index,'%05d'),'-',num2str(frameIndex,'%05d'),'.png'];
               
               position_char=char(position);
@@ -47,9 +48,9 @@ function data = parseXML(index,imgWidth,imgHeight)
               boundingBox=[X,Y,boxWidth,boxHeight];
               bo=isLightType(type);% bo==1,means the type is TL
               if boundingBox(3)*boundingBox(4)>256&&bo==0
-                  globalIndex=globalIndex+1;
-                  imgeFilename{globalIndex}=imgPath;  
-                  objectBoundingBoxes{globalIndex}=boundingBox;
+                  label_globalIndex=label_globalIndex+1;
+                  imgeFilename{label_globalIndex}=imgPath;  
+                  objectBoundingBoxes{label_globalIndex}=boundingBox;
               end
         end
         
