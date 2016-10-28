@@ -7,12 +7,12 @@ detector = vision.CascadeObjectDetector('trainedDetetorXML\trainedDetector7.xml'
 %imDir = fullfile(matlabroot,'toolbox','vision','visiondata','stopSignImages');
 %addpath(imDir);
 
-load elm_model_step1.mat;%load ELM trained model
-figure;
+load elm_model_ChinaSign.mat;%load ELM trained model
+
 for videoIndex=1:150
 filename=['E:\BaiduYunDownload\模糊图像处理竞赛\初赛数据集及相关文档\交通标识图像识别挑战赛\发布1010\',num2str(videoIndex,'%03d'),'\',num2str(videoIndex,'%03d'),'.avi'];
 v = VideoReader(filename);
-
+%v = VideoReader('D:\JY\JY_TrainingSamples\TrafficSignVideo\TrafficSign6.avi');
 %read images from video
 while hasFrame(v)
     video = readFrame(v);
@@ -42,7 +42,7 @@ while hasFrame(v)
             TY=(H_test' * OutputWeight)';
             [x, label_index_actual]=max(TY);
             output=label(label_index_actual);%get the traffic sign classId
-            label_str{boxIndex}=char(mapId2TypeString(output+1));
+            label_str{boxIndex}=char(mapId2TypeString2(output+1));
             %detectedImg = insertObjectAnnotation(img,'rectangle',bbox,output);
         end 
         detectedImg = insertObjectAnnotation(img,'rectangle',bboxes,label_str,'TextBoxOpacity',0.9,'FontSize',18);
