@@ -25,7 +25,7 @@ for imgIndex=0:imgNums-1
     numTarget=numBox;
     if numBox>0
         label_str=cell(numBox,1);
-        container={};
+        container={};%set the target details
         boxCount=1;
         for boxIndex=1:numBox
             bbox=bboxes(boxIndex,:);
@@ -43,14 +43,14 @@ for imgIndex=0:imgNums-1
             end
             TY=(H_test' * OutputWeight)';
             [x, label_index_actual]=max(TY);
-            output=label(label_index_actual);%get the traffic sign classId
-            label_str{boxIndex}=char(mapId2TypeString(output+1));
-            if output==0
-                numTarget=numTarget-1;
-                continue;
-            end
+            %output=label(label_index_actual);%get the traffic sign classId
+            label_str{boxIndex}=char(mapId2TypeString3(label_index_actual));
+%             if output==0
+%                 numTarget=numTarget-1;
+%                 continue;
+%             end
             container{boxCount,1}=bbox;
-            container{boxCount,2}=char(mapId2TypeString(output+1));
+            container{boxCount,2}=char(mapId2TypeString3(label_index_actual));
             boxCount=boxCount+1;
         end 
        
